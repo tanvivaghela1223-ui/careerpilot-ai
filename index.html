@@ -1,0 +1,288 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerPilot AI | Career Mentor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:
+radial-gradient(circle at top,#00ffff22,transparent 40%),
+radial-gradient(circle at bottom,#ff00ff22,transparent 40%),
+#050505;
+}
+
+.hero h1{
+font-size:4rem;
+color:#00ffff;
+text-shadow:0 0 20px #00ffff;
+}
+
+.hero p{
+margin-top:15px;
+font-size:1.2rem;
+max-width:700px;
+}
+
+.btn{
+margin-top:25px;
+padding:12px 25px;
+background:#00ffff;
+color:black;
+font-weight:bold;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+section{
+padding:80px 10%;
+}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:40px;
+color:#00ffff;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #00ffff55;
+}
+
+.card h3{
+color:#00ffff;
+margin-bottom:10px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#111;
+color:white;
+}
+
+button{
+padding:12px 20px;
+margin-top:15px;
+background:#00ffff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+#result{
+margin-top:20px;
+font-size:1.1rem;
+color:#00ffff;
+}
+
+.chat-box{
+background:#111;
+padding:20px;
+border-radius:15px;
+}
+
+.chat-box input{
+margin-bottom:10px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#080808;
+margin-top:50px;
+border-top:1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<h1>CareerPilot AI</h1>
+<p>Your Personal AI Career Mentor. Discover the best career path, interview tips and learning roadmaps.</p>
+<a href="#career"><button class="btn">Get Started</button></a>
+</section>
+
+<section id="career">
+<h2 class="section-title">Career Recommendation</h2>
+
+<div class="card">
+<label>Select Interest</label>
+
+<select id="interest">
+<option>Technology</option>
+<option>Business</option>
+<option>Design</option>
+<option>Medical</option>
+<option>Marketing</option>
+</select>
+
+<button onclick="recommendCareer()">Find Career</button>
+
+<div id="result"></div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Popular Career Paths</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Software Developer</h3>
+<p>Build websites, apps and AI solutions.</p>
+</div>
+
+<div class="card">
+<h3>UI/UX Designer</h3>
+<p>Create attractive and user-friendly designs.</p>
+</div>
+
+<div class="card">
+<h3>Digital Marketer</h3>
+<p>Promote brands using online platforms.</p>
+</div>
+
+<div class="card">
+<h3>Data Analyst</h3>
+<p>Analyze data and help companies make decisions.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Interview Tips</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Communication</h3>
+<p>Speak confidently and clearly.</p>
+</div>
+
+<div class="card">
+<h3>Research Company</h3>
+<p>Learn about company goals and values.</p>
+</div>
+
+<div class="card">
+<h3>Practice Questions</h3>
+<p>Prepare common HR and technical questions.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2 class="section-title">AI Mentor Chat</h2>
+
+<div class="chat-box">
+
+<input type="text" id="question" placeholder="Ask a career question">
+
+<button onclick="chatAI()">Ask Mentor</button>
+
+<div id="answer" style="margin-top:20px;"></div>
+
+</div>
+</section>
+
+<footer>
+<h3>CareerPilot AI</h3>
+<p>Created by Tanvi Vaghela</p>
+<p>Powered by AI Technology</p>
+</footer>
+
+<script>
+function recommendCareer(){
+
+let interest=document.getElementById("interest").value;
+let result=document.getElementById("result");
+
+if(interest==="Technology"){
+result.innerHTML="Recommended: Software Developer, AI Engineer, Cybersecurity Analyst";
+}
+else if(interest==="Business"){
+result.innerHTML="Recommended: Business Analyst, Entrepreneur, Finance Manager";
+}
+else if(interest==="Design"){
+result.innerHTML="Recommended: UI/UX Designer, Graphic Designer";
+}
+else if(interest==="Medical"){
+result.innerHTML="Recommended: Doctor, Pharmacist, Medical Researcher";
+}
+else{
+result.innerHTML="Recommended: Digital Marketer, Brand Strategist";
+}
+}
+
+function chatAI(){
+
+let q=document.getElementById("question").value.toLowerCase();
+let ans=document.getElementById("answer");
+
+if(q.includes("software")){
+ans.innerHTML="<b>AI Mentor:</b> Learn HTML, CSS, JavaScript, React and build projects.";
+}
+else if(q.includes("designer")){
+ans.innerHTML="<b>AI Mentor:</b> Learn Figma, UI/UX principles and create portfolio projects.";
+}
+else if(q.includes("interview")){
+ans.innerHTML="<b>AI Mentor:</b> Practice communication, confidence and common interview questions.";
+}
+else{
+ans.innerHTML="<b>AI Mentor:</b> Keep learning, building projects and improving your skills regularly.";
+}
+}
+</script>
+
+</body>
+</html>
+```
